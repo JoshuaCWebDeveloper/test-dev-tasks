@@ -3,6 +3,19 @@
   "version": "0.0.0",
   "description": "Configurations for dev task automation",
   "dependencies": {
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "eslint": "^4.1.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-util": "^3.0.8",
+    "imports-loader": "^0.7.1",
+    "jcscript": "^1.4.0",
+    "q": "^1.5.0",
+    "webpack": "^3.0.0",
+    "yargs": "^8.0.2"
   },
   "devDependencies": {
   },
