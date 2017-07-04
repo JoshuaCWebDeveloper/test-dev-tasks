@@ -22,6 +22,9 @@
   },
   "main": "",
   "scripts": {
+    "gulp": "gulp",
+    "lint": "gulp lint",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
