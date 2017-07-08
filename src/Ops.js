@@ -26,6 +26,7 @@ class Ops {
             sourceDir: "src",
             buildDir: "build",
             bundleDir: "public/js",
+            bundleName: "bundle",
             wpSingleEntryPoint: "./app/app.js"
         });
     }
@@ -67,8 +68,9 @@ ${cli.getFormatter()(lint.results)}
     bundle (env, minify) {
         //default environment to development
         var env = env || "development",
+            bName = this.__Config.get("bundleName"),
             //define filename
-            outFn = minify ? 'bundle.min.js' : 'bundle.js',
+            outFn = minify ? `${bName}.min.js` : `${bName}.js`,
             //define webpack config
             wpConfig = {
                 //single entry point of app.js
