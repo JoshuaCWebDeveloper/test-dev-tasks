@@ -10,4 +10,4 @@ import { Ops } from './Ops.js';
 //create ops instance
 var instance = new Ops();
 //export modules
-export default instance;
+module.exports = instance;
