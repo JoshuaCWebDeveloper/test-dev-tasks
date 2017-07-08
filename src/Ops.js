@@ -116,7 +116,7 @@ ${cli.getFormatter()(lint.results)}
             }));
         }
         //out operation info
-        gutil.log(`Starting WebPack compiler, output to: ${outFn}`);
+        gutil.log(`Starting WebPack compiler, output to: ${wpConfig.output.path}/${wpConfig.output.filename}`);
         //create and run webpack compiler (use Q promise)
         return Q.nbind(webpack)(wpConfig).then(function (stats) {
             //output stats info
