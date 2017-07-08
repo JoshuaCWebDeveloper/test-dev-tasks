@@ -14,6 +14,7 @@ var BabiliPlugin = require("babili-webpack-plugin"),
     gutil = require("gulp-util"),
     JCObject = require("jcscript").JCObject,
     path = require("path"),
+    process = require("process"),
     Q = require('q'),
     webpack = require("webpack"),
     argv = require("yargs").argv;
@@ -77,7 +78,7 @@ ${cli.getFormatter()(lint.results)}
                 entry: this.__Config.get("wpSingleEntryPoint"),
                 //output to public bundle.js
                 output: {
-                    path: path.resolve(__dirname, this.__Config.get("bundleDir")),
+                    path: path.resolve(process.cwd(), this.__Config.get("bundleDir")),
                     filename: outFn
                 },
                 module: {
