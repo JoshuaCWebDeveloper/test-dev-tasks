@@ -20,7 +20,7 @@
   "devDependencies": {
     "gulp-cli": "^1.3.0"
   },
-  "main": "",
+  "main": "build/index.js",
   "scripts": {
     "gulp": "gulp",
     "lint": "gulp lint",
