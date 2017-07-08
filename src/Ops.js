@@ -145,4 +145,4 @@ ${cli.getFormatter()(lint.results)}
     
 }
 //export ops class
-export { Ops };
+module.exports = Ops;
