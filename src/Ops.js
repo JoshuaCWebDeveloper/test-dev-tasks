@@ -1,6 +1,6 @@
 /* Ops.js
  * Class that holds dev-tasks operations and configuration
- * Dependencies: babili-webpack-plugin, eslint,
+ * Dependencies: babili-webpack-plugin, eslint, extend,
                  gulp, gulp-util, jcscript, path, Q, webpack, yargs modules
  * Author: Joshua Carter
  * Created: July 03, 2017
@@ -9,6 +9,7 @@
 //include modules
 var BabiliPlugin = require("babili-webpack-plugin"),
     ESLintEngine = require("eslint").CLIEngine,
+    extend = require("extend"),
     gulp = require("gulp"),
     babel = require("gulp-babel"),
     gutil = require("gulp-util"),
@@ -28,7 +29,8 @@ class Ops {
             buildDir: "build",
             bundleDir: "public/js",
             bundleName: "bundle",
-            wpSingleEntryPoint: "./app/app.js"
+            wpSingleEntryPoint: "./app/app.js",
+            wpExtOptions: {}
         });
     }
     
@@ -73,7 +75,7 @@ ${cli.getFormatter()(lint.results)}
             //define filename
             outFn = minify ? `${bName}.min.js` : `${bName}.js`,
             //define webpack config
-            wpConfig = {
+            wpConfig = extend({
                 //single entry point of app.js
                 entry: this.__Config.get("wpSingleEntryPoint"),
                 //output to public bundle.js
@@ -108,7 +110,7 @@ ${cli.getFormatter()(lint.results)}
                         "process.env.NODE_ENV": JSON.stringify(env)
                     })
                 ]
-            };
+            }, this.__Config.get("wpExtOptions"));
         //if we are to minify
         if (minify) {
             //add minifier plugin
