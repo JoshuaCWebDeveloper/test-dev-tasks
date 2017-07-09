@@ -94,7 +94,7 @@ var Ops = function () {
             outFn = minify ? bName + ".min.js" : bName + ".js",
 
             //define webpack config
-            wpConfig = extend({
+            wpConfig = extend(true, {
                 //single entry point of app.js
                 entry: this.__Config.get("wpSingleEntryPoint"),
                 //output to public bundle.js
