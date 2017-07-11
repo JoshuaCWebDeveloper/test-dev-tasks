@@ -312,8 +312,14 @@ Ensure that all of and only the following files are modified: ${reqs.modFiles.jo
             ops.push(props.git.index.addByPath('package.json'));
             ops.push(props.git.index.addByPath(`${bundleProps.bundleDir}/${bundleProps.bundleName}.js`));
             ops.push(props.git.index.addByPath(`${bundleProps.bundleDir}/${bundleProps.bundleName}.min.js`));
-            //removed op, maintain indexes
-            ops.push(1);
+            //if package-lock.json exists, add it too
+            if (fs.existsSync('package-lock.json')) {
+                ops.push(props.git.index.addByPath('package-lock.json'));
+            }
+            else {
+                //maintain indexes
+                ops.push(1);
+            }
             //get user.name and user.email from git config
             ops.push(props.git.config.getStringBuf("user.name"));
             ops.push(props.git.config.getStringBuf("user.email"));
