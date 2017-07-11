@@ -177,6 +177,8 @@ var Ops = function () {
     }, {
         key: "release",
         value: function release() {
+            var _this = this;
+
             var bundleProps = this.__Config.get(['bundleName', 'bundleDir']),
 
             //set requirements for release
@@ -366,7 +368,7 @@ var Ops = function () {
                 var packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8')),
 
                 //create name of tag using current version
-                tagName = this.__Config.get('gitTagName')(packageJson.version),
+                tagName = _this.__Config.get('gitTagName')(packageJson.version),
 
                 //create annotation from changelog, append header with app name and version
                 annotation = props.appName + " " + tagName + " " + os.EOL + props.changelogContents,

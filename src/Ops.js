@@ -347,7 +347,7 @@ Ensure that all of and only the following files are modified: ${reqs.modFiles.jo
                 message = `Update ${bundleProps.bundleName}.js, ${bundleProps.bundleName}.min.js, and package.json version`;
             //commit our changes to HEAD
             return props.git.repo.createCommit("HEAD", author, props.committer.signature, message, props.git.tree, [props.git.head]);
-        }).then(function (commitOid) {
+        }).then((commitOid) => {
             //SUCCESS
             //get newest package json contents
             var packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8')),
