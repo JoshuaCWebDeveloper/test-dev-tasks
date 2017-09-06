@@ -8,12 +8,7 @@
     "es6": true
   },
   "globals": {
-    "API_ROOT": false,
-    "SERVER_ENVIRONMENT": false,
-    "SITE_ROOT": false,
-    "COOKIE_EXPIRES": false,
-    "siteConfigInfo": false,
-    "siteEnvConfig": false
+    "APPCONFIG": false
   },
   "parserOptions": {
     "sourceType": "module",
