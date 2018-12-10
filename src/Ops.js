@@ -153,7 +153,7 @@ ${cli.getFormatter()(lint.results)}
     build () {
         return gulp.src(`${this.__Config.get("sourceDir")}/**`)
             .pipe(babel({
-                presets: ['env']
+                presets: ['env', 'react']
             }))
             .pipe(gulp.dest(`${this.__Config.get("buildDir")}/`));
     }

@@ -171,7 +171,7 @@ var Ops = function () {
         key: "build",
         value: function build() {
             return gulp.src(this.__Config.get("sourceDir") + "/**").pipe(babel({
-                presets: ['env']
+                presets: ['env', 'react']
             })).pipe(gulp.dest(this.__Config.get("buildDir") + "/"));
         }
     }, {
