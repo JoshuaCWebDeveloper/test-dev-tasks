@@ -74,9 +74,7 @@ gulp.task('minify', function () {
 
 //create a new release and push it to master
 gulp.task('release', function () {
-    return DevOps.release().then(function () {
-        return Promise.resolve(true);
-    });
+    return Promise.resolve(DevOps.release());
 });
 
 
