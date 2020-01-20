@@ -1,32 +1,24 @@
 {
-  "name": "dev-tasks",
+  "name": "test-dev-tasks",
   "version": "0.0.0",
-  "description": "Configurations for dev task automation",
-  "dependencies": {
-    "babel-loader": "^7.1.1",
-    "babel-preset-env": "^1.5.2",
-    "babel-preset-react": "^6.24.1",
-    "babili-webpack-plugin": "^0.1.2",
-    "eslint": "^4.1.1",
-    "extend": "^3.0.1",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-util": "^3.0.8",
-    "imports-loader": "^0.7.1",
-    "jcscript": "^1.4.0",
-    "nodegit": "^0.18.3",
-    "q": "^1.5.0",
-    "webpack": "^3.0.0",
-    "yargs": "^8.0.2"
-  },
+  "description": "Test repo for testing the dev tasks project, especially the git release portion.",
+  "dependencies": {},
   "devDependencies": {
-    "gulp-cli": "^1.3.0"
+    "babel-loader": "^7.1.5",
+    "dev-tasks": "github:joshuacwebdeveloper/dev-tasks#16abf14",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-util": "^3.0.8",
+    "request": "^2.79.0"
   },
   "main": "build/index.js",
   "scripts": {
     "gulp": "gulp",
     "lint": "gulp lint",
-    "build": "gulp build"
+    "build": "gulp build",
+    "bundle": "gulp bundle",
+    "minify": "gulp minify",
+    "release": "gulp release"
   },
   "repository": {
     "type": "git",
