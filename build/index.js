@@ -1,15 +1,28 @@
 /* index.js
- * Loads the dev-tasks library
- * Dependencies: Ops class
+ * Loads the react-orcus library
+ * Dependencies: 
+    - classes: 
  * Author: Joshua Carter
- * Created: July 4, 2017
+ * Created: January 18, 2020
  */
 "use strict";
-//include modules
+//include dependencies
 
-var _Ops = require("./Ops.js");
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.App = exports.Desktop = undefined;
 
-//create ops instance
-var instance = new _Ops.Ops();
+var _Desktop = require('./Desktop.js');
+
+var _OrcusApp = require('./OrcusApp.js');
+
 //export modules
-module.exports = instance;
+exports.Desktop = _Desktop.Desktop;
+exports.App = _OrcusApp.OrcusApp;
+//export default
+
+exports.default = {
+    Desktop: _Desktop.Desktop,
+    App: _OrcusApp.OrcusApp
+};

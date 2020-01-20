@@ -1,7 +1,7 @@
 /* Ops.js
  * Class that holds dev-tasks operations and configuration
- * Dependencies: babili-webpack-plugin, child-process, eslint, extend, fs,
-                 gulp, gulp-util, jcscript, nodegit, os, path, Q, webpack, yargs modules
+ * Dependencies: child-process, eslint, extend, fs,
+                 gulp, fancy-log, jcscript, nodegit, os, path, Q, webpack, yargs modules
  * Author: Joshua Carter
  * Created: July 03, 2017
  */
@@ -16,14 +16,13 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var BabiliPlugin = require("babili-webpack-plugin"),
-    exec = require('child_process').exec,
+var exec = require('child_process').exec,
     ESLintEngine = require("eslint").CLIEngine,
     extend = require("extend"),
     fs = require('fs'),
     gulp = require("gulp"),
     babel = require("gulp-babel"),
-    gutil = require("gulp-util"),
+    log = require("fancy-log"),
     JCObject = require("jcscript").JCObject,
     Git = require("nodegit"),
     os = require('os'),
@@ -79,14 +78,14 @@ var Ops = function () {
             //execute lint on app directory
             lint = cli.executeOnFiles([this.__Config.get("sourceDir")]);
             //output results
-            gutil.log("\n\n" + cli.getFormatter()(lint.results) + "\n");
+            log.info("\n\n" + cli.getFormatter()(lint.results) + "\n");
             //if there were problems
             if (lint.errorCount || lint.warningCount) {
                 //stop this madness
                 throw new Error("Lint problems detected, unable to continue.");
             } else {
                 //good job
-                gutil.log("Your code is clean.");
+                log.info("Your code is clean.");
             }
         }
 
@@ -123,7 +122,7 @@ var Ops = function () {
                         use: {
                             loader: 'babel-loader',
                             options: {
-                                presets: ['env', 'react']
+                                presets: ['@babel/preset-env', '@babel/preset-react'].concat(minify ? ['minify'] : [])
                             }
                         }
                     },
@@ -139,19 +138,12 @@ var Ops = function () {
                     "process.env.NODE_ENV": JSON.stringify(env)
                 })]
             }, this.__Config.get("wpExtOptions"));
-            //if we are to minify
-            if (minify) {
-                //add minifier plugin
-                wpConfig.plugins.push(new BabiliPlugin({
-                    "builtIns": false
-                }));
-            }
             //out operation info
-            gutil.log("Starting WebPack compiler, output to: " + wpConfig.output.path + "/" + wpConfig.output.filename);
+            log.info("Starting WebPack compiler, output to: " + wpConfig.output.path + "/" + wpConfig.output.filename);
             //create and run webpack compiler (use Q promise)
             return Q.nbind(webpack)(wpConfig).then(function (stats) {
                 //output stats info
-                gutil.log(stats.toString());
+                log.info(stats.toString());
             }, function (err) {
                 //log the error
                 console.error(err.stack || err);
@@ -171,7 +163,7 @@ var Ops = function () {
         key: "build",
         value: function build() {
             return gulp.src(this.__Config.get("sourceDir") + "/**").pipe(babel({
-                presets: ['env', 'react']
+                presets: ['env']
             })).pipe(gulp.dest(this.__Config.get("buildDir") + "/"));
         }
     }, {
@@ -302,7 +294,7 @@ var Ops = function () {
                 }
                 //if we have failed
                 if (statusFail) {
-                    throw new Error("Unrecognized or missing modified files. \nEnsure that all of and only the following files are modified: " + reqs.modFiles.join(', '));
+                    throw new Error("Unrecognized or missing modified files. \n                    Ensure that all of and only the following files are modified: " + reqs.modFiles.join(', '));
                 }
                 //ensure that the merge base between our branch and master is master
                 tests.push(Git.Merge.base(props.git.repo, props.git.head, props.git.master));
@@ -397,7 +389,7 @@ var Ops = function () {
                 //just use a git command, nodegit isn't ready for prime time
                 return Q.nbind(exec)("git push " + reqs.remote + " master:master " + props.tagName);
             }).then(function () {
-                gutil.log("\n\nSuccessfully released " + props.tagName + "!\n");
+                log.info("\n\n                Successfully released " + props.tagName + "!\n                ");
             });
         }
     }]);
