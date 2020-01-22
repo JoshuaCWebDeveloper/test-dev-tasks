@@ -4,44 +4,36 @@
  * Author: Joshua Carter
  * Created: January 1, 2020
  */
-"use strict";
-//import modules
+"use strict"; //import modules
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.OrcusUiButton = undefined;
+exports.OrcusUiButton = void 0;
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _react = _interopRequireDefault(require("react"));
 
-var _react = require('react');
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _react2 = _interopRequireDefault(_react);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 //create our OrcusUiButton class
 var OrcusUiButton = function OrcusUiButton(props) {
-    var className = "orcus-ui orcus-button " + props.className;
-    //render
-    return _react2.default.createElement(
-        'span',
-        _extends({}, props, { className: className }),
-        this.props.children
-    );
-};
-//define default props
-OrcusUiButton.defaultProps = {
-    className: ""
-};
-//define props
-OrcusUiButton.propTypes = {
-    className: _propTypes2.default.string
-};
+  var className = "orcus-ui orcus-button " + props.className; //render
 
-//export OrcusUiButton class
+  return _react["default"].createElement("span", _extends({}, props, {
+    className: className
+  }), this.props.children);
+}; //define default props
+
+
 exports.OrcusUiButton = OrcusUiButton;
+OrcusUiButton.defaultProps = {
+  className: ""
+}; //define props
+
+OrcusUiButton.propTypes = {
+  className: _propTypes["default"].string
+}; //export OrcusUiButton class

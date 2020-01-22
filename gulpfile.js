@@ -43,8 +43,9 @@ Available Gulp Commands:
 });
 
 //lint code using ESLint
-gulp.task('lint', function () {
-    return DevOps.lint();
+gulp.task('lint', function (cb) {
+    DevOps.lint();
+    return cb();
 });
 
 //transpile code using babel
