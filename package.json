@@ -1,6 +1,6 @@
 {
   "name": "test-dev-tasks",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Test repo for testing the dev tasks project, especially the git release portion.",
   "dependencies": {},
   "devDependencies": {
