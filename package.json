@@ -4,12 +4,12 @@
   "description": "Test repo for testing the dev tasks project, especially the git release portion.",
   "dependencies": {},
   "devDependencies": {
-    "babel-loader": "^7.1.5",
-    "dev-tasks": "github:joshuacwebdeveloper/dev-tasks#16abf14",
+    "babel-loader": "^8.0.6",
+    "dev-tasks": "file:../dev-tasks",
+    "fancy-log": "^1.3.3",
     "gulp": "^4.0.2",
     "gulp-cli": "^2.2.0",
-    "gulp-util": "^3.0.8",
-    "request": "^2.79.0"
+    "imports-loader": "^0.8.0"
   },
   "main": "build/index.js",
   "scripts": {

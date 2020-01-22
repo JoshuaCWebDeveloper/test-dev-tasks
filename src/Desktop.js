@@ -23,11 +23,11 @@ var Desktop = class extends React.Component {
         var className = "orcus-desktop " + this.props.className,
             //get id, either property or default
             id = (this.props.id == DEFAULT_ID) ? this.defaultId : this.props.id,
-            //{shortcuts, taskbar, programMenu, ...props} = this.props,
-            shortcuts = 1,
-            taskbar = 1,
-            programMenu = true,
-            props = {},
+            {shortcuts, taskbar, programMenu, ...props} = this.props,
+            //shortcuts = 1,
+            //taskbar = 1,
+            //programMenu = true,
+            //props = {},
             shortcutsContent = "",
             taskbarContent = "",
             programMenuContent = "";

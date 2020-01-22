@@ -35,9 +35,9 @@ var OrcusApp = class extends React.Component {
         var className = "orcus-app orcus-window " + this.props.className,
             //get id, either property or default
             id = (this.props.id == DEFAULT_ID) ? this.defaultId : this.props.id,
-            //{slug, name, icon, initialOpened, initialPosition, ...props} = this.props,
-            slugs = undefined,
-            props = {},
+            {slug, name, icon, initialOpened, initialPosition, ...props} = this.props,
+            //slugs = undefined,
+            //props = {},
             restoreMaximizeContent = "";
         
         //if we are closed
